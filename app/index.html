@@ -1,21 +1,55 @@
 <html>
-	<head>
-		<script src="bower_components/angular/angular.js" type="text/javascript"></script>
-		<script src="bower_components/jquery/dist/jquery.js" type="text/javascript"></script>
-		<script src="bower_components/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
-		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-		<script src="scripts.js" type="text/javascript"></script>
-	</head>
-	<body ng-app="RPiWeb" ng-controller="MainController">
-		<div class="container">
+<head>
+	<script src="bower_components/angular/angular.js" type="text/javascript"></script>
+	<script src="bower_components/jquery/dist/jquery.js" type="text/javascript"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<script src="scripts.js" type="text/javascript"></script>
+	<title>Raspberry Pi 2 Web Controller</title>
+	<style>
+	 .btn,
+	 .input-group {
+	 	margin-top: 5px;
+	 }
+
+	</style>
+</head>
+<body ng-app="RPiWeb" ng-controller="MainController">
+	<div class="container text-center">
+		<h1>Raspberry Pi 2 Web Controller</h1>
+		<div class="form-inline hidden-xs ">
 			<div>
-				<button class="btn btn-primary" ng-click='on()'>On</button>
-				<button class="btn btn-primary" ng-click='off()'>Off</button>
+				<button class="btn btn-primary btn-lg" ng-click='on()'>On</button>
+				<button class="btn btn-default btn-lg" ng-click='off()'>Off</button>
+				<button class="btn btn-primary btn-lg" ng-click='toggle()'>Toggle</button>
 			</div>
+			<hr />
 			<div>
-				<button class="btn btn-primary" ng-click='blink(delay)'>Off</button>
-				<input type="text" ng-model="delay" />
+				<div class="input-group">
+					<div class="input-group-addon">Blink</div>
+					<input type="text" ng-model="delay" class="form-control" placeholder="delay" />
+					<div class="input-group-addon">ms</div>
+				</div>
+				<button class="btn btn-success" ng-click='blink(delay)'>Start</button>
+				<button class="btn btn-danger" ng-click='stop()'>Stop</button>
 			</div>
 		</div>
-	</body>
+
+		<div class="visible-xs">
+			<button class="btn btn-primary btn-block" ng-click='on()'>On</button>
+			<button class="btn btn-default btn-block" ng-click='off()'>Off</button>
+			<button class="btn btn-primary btn-block" ng-click='toggle()'>Toggle</button>
+
+			<hr />
+
+			<div class="input-group">
+				<div class="input-group-addon">Blink</div>
+				<input type="text" ng-model="delay" class="form-control" placeholder="delay" />
+				<div class="input-group-addon">ms</div>
+			</div>
+			<button class="btn btn-success btn-block" ng-click='blink(delay)'>Start</button>
+			<button class="btn btn-danger btn-block" ng-click='stop()'>Stop</button>
+		</div>
+	</div>
+</body>
 </html>
