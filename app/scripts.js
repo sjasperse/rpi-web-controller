@@ -22,3 +22,4 @@ app.controller('MainController', function ($scope, $http) {
 		$http.post('/action/stop');
 	}
 });
+
