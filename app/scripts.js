@@ -11,5 +11,9 @@ app.controller('MainController', function ($scope, $http) {
 
 	$scope.off = function () {
 		$http.post('/action/off');
-	}
+	};
+
+	$scope.blink = function (delay) {
+		$http.post('/action/blink', { delay: delay });
+	};
 });

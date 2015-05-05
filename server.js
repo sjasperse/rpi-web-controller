@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var logger = require('morgan');
+var bodyParser = require('body-parser')
 var jfive = require('johnny-five');
 var Raspi = require('raspi-io');
 var board = new jfive.Board({
@@ -9,6 +10,7 @@ var board = new jfive.Board({
 
 app.use(logger('dev'));
 app.use(express.static('app'));
+app.use( bodyParser.json() );
 
 var relay = null;
 
@@ -28,7 +30,24 @@ app.post('/action/off', function (req, res) {
 	res.sendStatus(200);
 });
 
+app.post('/action/blink', function (req, res) {
+	console.log('ACTION: Blink');
 
+	var delay = req.body.delay;
+	if (delay) {
+		relay.blink(delay);
+	}
+
+	res.sendStatus(200);
+});
+
+app.post('/action/stop', function (req, res) {
+	console.log('ACTION: Stop');
+
+	relay.stop();
+
+	res.sendStatus(200);
+});
 
 
 board.on('ready', function () {
