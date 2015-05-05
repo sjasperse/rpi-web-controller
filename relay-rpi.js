@@ -7,7 +7,7 @@ var board = new jfive.Board({
 var relay = null;
 
 board.on('ready', function () {
-  relay = new jfive.Relay('P1-10');
+  relay = new jfive.Led('P1-10'); // Led object gives us access to the blink functions.
   console.log('RELAY: Relay ready');
 });
 
