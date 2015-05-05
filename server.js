@@ -51,7 +51,7 @@ app.post('/action/stop', function (req, res) {
 
 
 board.on('ready', function () {
-  relay = new jfive.Relay('P1-10');
+  relay = new jfive.Led('P1-10');
 
   var server = app.listen(3000, function() {
 
